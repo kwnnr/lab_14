@@ -53,3 +53,18 @@ void popBack(vector *v) {
     } else
         v->size--;
 }
+int* atVector(vector *v, size_t index) {
+    if (index > v->capacity)
+        fprintf(stderr, "IndexError: a[%zu] is not exists", index);
+    else if (v->capacity == 0 || index > v->size) {
+        fprintf(stderr, "bad alloc");
+        exit(1);
+    }
+    return &v->data[index];
+}
+int* back(vector *v) {
+    return atVector(v, v->size - 1);
+}
+int* front(vector *v) {
+    return v->data;
+}
